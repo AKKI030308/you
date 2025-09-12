@@ -3,95 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NiharikaX - Exclusive Content</title>
+  <title>Your Brand - Exclusive Content</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Welcome to NiharikaX</h1>
-    <p>Exclusive access to premium content. Join now!</p>
-    <button onclick="startPayment()">Unlock Now</button>
+    <div class="overlay">
+      <h1>Welcome to Your Exclusive Club</h1>
+      <p>Unlock premium content & connect directly</p>
+      <button onclick="startPayment(199)">Join Now ₹199</button>
+    </div>
   </section>
 
-  <!-- Products Section -->
-  <section class="products">
+  <!-- Plans Section -->
+  <section class="plans">
     <h2>Choose Your Plan</h2>
-    <div class="card">
-      <h3>Basic Plan</h3>
-      <p>₹199 only</p>
+    <div class="plan-card">
+      <h3>Basic Access</h3>
+      <p>₹199 / month</p>
       <button onclick="startPayment(199)">Buy Now</button>
     </div>
-    <div class="card">
-      <h3>Premium Plan</h3>
-      <p>₹499 only</p>
+    <div class="plan-card">
+      <h3>Premium Access</h3>
+      <p>₹499 / month</p>
       <button onclick="startPayment(499)">Buy Now</button>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 NiharikaX Clone. All rights reserved.</p>
+    <p>© 2025 YourBrand. All rights reserved.</p>
   </footer>
 
-  <!-- Cashfree Payment -->
-  <script src="https://sdk.cashfree.com/js/ui/1.0.26/dropinClient.prod.js"></script>
+  <!-- Payment Script -->
   <script>
     function startPayment(amount) {
       alert("Payment started for ₹" + amount);
-      
-      // TODO: Replace with real Cashfree integration
-      // On success, redirect to Telegram
+      // Replace with real Cashfree / Razorpay integration
       setTimeout(() => {
-        window.location.href = "https://t.me/YOUR_TELEGRAM_CHANNEL";
+        window.location.href = "https://t.me/YOUR_CHANNEL_LINK";
       }, 2000);
     }
   </script>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #111; color: #fff;
-      text-align: center;
-    }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: Arial, sans-serif; background: #111; color: #fff;}
+    
     .hero {
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #e91e63, #9c27b0);
+      height: 100vh;
+      background: url('https://picsum.photos/1200/800?blur=3') no-repeat center center/cover;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center; position: relative;
     }
-    .hero h1 { font-size: 3em; }
-    .hero p { margin: 15px 0; }
+    .overlay {
+      background: rgba(0,0,0,0.6); padding: 40px; border-radius: 10px;
+    }
+    .hero h1 {font-size: 3rem; margin-bottom: 15px;}
+    .hero p {margin-bottom: 20px;}
     .hero button {
-      padding: 12px 25px;
-      border: none; border-radius: 5px;
-      background: #fff; color: #111;
-      font-weight: bold; cursor: pointer;
+      padding: 12px 25px; font-size: 1rem;
+      background: #e91e63; color: #fff;
+      border: none; border-radius: 5px; cursor: pointer;
     }
-    .products {
-      padding: 50px 20px;
-      display: flex; justify-content: center;
-      gap: 20px; flex-wrap: wrap;
-    }
-    .card {
-      background: #222;
-      padding: 20px;
-      border-radius: 10px;
-      width: 200px;
+    .plans {padding: 60px 20px; text-align: center;}
+    .plans h2 {font-size: 2rem; margin-bottom: 30px;}
+    .plan-card {
+      background: #222; padding: 20px; border-radius: 10px;
+      display: inline-block; margin: 10px; width: 200px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    .card h3 { margin: 0 0 10px; }
-    .card button {
-      padding: 10px;
-      background: #e91e63;
-      border: none; border-radius: 5px;
-      color: #fff; font-weight: bold;
-      cursor: pointer;
+    .plan-card h3 {margin-bottom: 10px;}
+    .plan-card button {
+      margin-top: 15px; padding: 10px 20px;
+      background: #e91e63; color: #fff;
+      border: none; border-radius: 5px; cursor: pointer;
     }
-    footer {
-      padding: 20px;
-      background: #000;
-      font-size: 0.9em;
-    }
+    footer {padding: 20px; background: #000; text-align: center;}
   </style>
 </body>
 </html>
