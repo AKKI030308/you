@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NiharikaX - Ready Made Clothes</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+<section class="bg-white py-20 text-center">
+<h1 class="text-4xl font-bold mb-4">Stylish Ready-Made Clothes</h1>
+<p class="text-gray-700 mb-6">Shop your favorite outfits online & get them delivered fast!</p>
+<button id="heroPayButton" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Buy Now - Rs. 499</button>
+</section>
+
+<section class="py-16 max-w-6xl mx-auto">
+<h2 class="text-3xl font-semibold text-center mb-12">Our Collection</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+<div class="bg-white p-6 rounded shadow">
+<img src="images/product1.jpg" alt="Floral Summer Dress" class="mb-4 rounded">
+<h3 class="text-xl font-bold mb-2">Floral Summer Dress</h3>
+<p class="text-gray-600 mb-2">Rs. 499</p>
+<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="499" data-order="ORDER001">Buy</button>
+</div>
+
+<div class="bg-white p-6 rounded shadow">
+<img src="images/product2.jpg" alt="Casual Men's Shirt" class="mb-4 rounded">
+<h3 class="text-xl font-bold mb-2">Casual Men's Shirt</h3>
+<p class="text-gray-600 mb-2">Rs. 799</p>
+<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="799" data-order="ORDER002">Buy</button>
+</div>
+
+<div class="bg-white p-6 rounded shadow">
+<img src="images/product3.jpg" alt="Denim Jacket" class="mb-4 rounded">
+<h3 class="text-xl font-bold mb-2">Denim Jacket</h3>
+<p class="text-gray-600 mb-2">Rs. 999</p>
+<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="999" data-order="ORDER003">Buy</button>
+</div>
+
+</div>
+</section>
+
+<script src="https://sdk.cashfree.com/js/cashfree.min.js"></script>
+<script>
+const telegramLink = "https://t.me/qOH74KDqjNE4NDZl";
+function payNow(amount, orderId) {
+const config = {
+"orderId": orderId,
+"orderAmount": amount,
+"orderCurrency": "INR",
+"customerName": "Customer Name",
+"customerPhone": "9999999999",
+"customerEmail": "customer@example.com",
+"onSuccess": function() { window.location.href = telegramLink; },
+"onFailure": function() { alert("Payment Failed. Please try again."); }
+};
+Cashfree.init(config);
+Cashfree.open();
+}
+document.getElementById("heroPayButton").addEventListener("click", () => payNow(499, "ORDER000"));
+document.querySelectorAll(".payButton").forEach(button => {
+button.addEventListener("click", () => {
+const amount = button.getAttribute("data-amount");
+const orderId = button.getAttribute("data-order");
+payNow(amount, orderId);
+});
+});
+</script>
+</body>
+</html>
