@@ -1,72 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NiharikaX - Ready Made Clothes</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NiharikaX - Exclusive Content</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 font-sans">
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to NiharikaX</h1>
+    <p>Exclusive access to premium content. Join now!</p>
+    <button onclick="startPayment()">Unlock Now</button>
+  </section>
 
-<section class="bg-white py-20 text-center">
-<h1 class="text-4xl font-bold mb-4">Stylish Ready-Made Clothes</h1>
-<p class="text-gray-700 mb-6">Shop your favorite outfits online & get them delivered fast!</p>
-<button id="heroPayButton" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Buy Now - Rs. 499</button>
-</section>
+  <!-- Products Section -->
+  <section class="products">
+    <h2>Choose Your Plan</h2>
+    <div class="card">
+      <h3>Basic Plan</h3>
+      <p>₹199 only</p>
+      <button onclick="startPayment(199)">Buy Now</button>
+    </div>
+    <div class="card">
+      <h3>Premium Plan</h3>
+      <p>₹499 only</p>
+      <button onclick="startPayment(499)">Buy Now</button>
+    </div>
+  </section>
 
-<section class="py-16 max-w-6xl mx-auto">
-<h2 class="text-3xl font-semibold text-center mb-12">Our Collection</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 NiharikaX Clone. All rights reserved.</p>
+  </footer>
 
-<div class="bg-white p-6 rounded shadow">
-<img src="images/product1.jpg" alt="Floral Summer Dress" class="mb-4 rounded">
-<h3 class="text-xl font-bold mb-2">Floral Summer Dress</h3>
-<p class="text-gray-600 mb-2">Rs. 499</p>
-<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="499" data-order="ORDER001">Buy</button>
-</div>
+  <!-- Cashfree Payment -->
+  <script src="https://sdk.cashfree.com/js/ui/1.0.26/dropinClient.prod.js"></script>
+  <script>
+    function startPayment(amount) {
+      alert("Payment started for ₹" + amount);
+      
+      // TODO: Replace with real Cashfree integration
+      // On success, redirect to Telegram
+      setTimeout(() => {
+        window.location.href = "https://t.me/YOUR_TELEGRAM_CHANNEL";
+      }, 2000);
+    }
+  </script>
 
-<div class="bg-white p-6 rounded shadow">
-<img src="images/product2.jpg" alt="Casual Men's Shirt" class="mb-4 rounded">
-<h3 class="text-xl font-bold mb-2">Casual Men's Shirt</h3>
-<p class="text-gray-600 mb-2">Rs. 799</p>
-<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="799" data-order="ORDER002">Buy</button>
-</div>
-
-<div class="bg-white p-6 rounded shadow">
-<img src="images/product3.jpg" alt="Denim Jacket" class="mb-4 rounded">
-<h3 class="text-xl font-bold mb-2">Denim Jacket</h3>
-<p class="text-gray-600 mb-2">Rs. 999</p>
-<button class="payButton bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" data-amount="999" data-order="ORDER003">Buy</button>
-</div>
-
-</div>
-</section>
-
-<script src="https://sdk.cashfree.com/js/cashfree.min.js"></script>
-<script>
-const telegramLink = "https://t.me/qOH74KDqjNE4NDZl";
-function payNow(amount, orderId) {
-const config = {
-"orderId": orderId,
-"orderAmount": amount,
-"orderCurrency": "INR",
-"customerName": "Customer Name",
-"customerPhone": "9999999999",
-"customerEmail": "customer@example.com",
-"onSuccess": function() { window.location.href = telegramLink; },
-"onFailure": function() { alert("Payment Failed. Please try again."); }
-};
-Cashfree.init(config);
-Cashfree.open();
-}
-document.getElementById("heroPayButton").addEventListener("click", () => payNow(499, "ORDER000"));
-document.querySelectorAll(".payButton").forEach(button => {
-button.addEventListener("click", () => {
-const amount = button.getAttribute("data-amount");
-const orderId = button.getAttribute("data-order");
-payNow(amount, orderId);
-});
-});
-</script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #111; color: #fff;
+      text-align: center;
+    }
+    .hero {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #e91e63, #9c27b0);
+    }
+    .hero h1 { font-size: 3em; }
+    .hero p { margin: 15px 0; }
+    .hero button {
+      padding: 12px 25px;
+      border: none; border-radius: 5px;
+      background: #fff; color: #111;
+      font-weight: bold; cursor: pointer;
+    }
+    .products {
+      padding: 50px 20px;
+      display: flex; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .card {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .card h3 { margin: 0 0 10px; }
+    .card button {
+      padding: 10px;
+      background: #e91e63;
+      border: none; border-radius: 5px;
+      color: #fff; font-weight: bold;
+      cursor: pointer;
+    }
+    footer {
+      padding: 20px;
+      background: #000;
+      font-size: 0.9em;
+    }
+  </style>
 </body>
 </html>
