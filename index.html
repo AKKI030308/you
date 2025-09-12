@@ -3,31 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Brand - Exclusive Content</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Your Brand - Premium Access</title>
+  <style>
+    /* Reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif;}
+
+    body {background: #0e0e0e; color: #fff; line-height: 1.6;}
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('https://picsum.photos/1200/800?grayscale&blur=2') no-repeat center/cover;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero-content {
+      position: relative; z-index: 2; max-width: 600px;
+    }
+    .hero-content h1 {font-size: 3rem; margin-bottom: 15px;}
+    .hero-content p {font-size: 1.2rem; margin-bottom: 20px; color: #ccc;}
+    .btn-main {
+      padding: 15px 30px; font-size: 1.1rem; font-weight: bold;
+      border: none; border-radius: 50px;
+      background: linear-gradient(135deg,#e91e63,#ff5722);
+      color: #fff; cursor: pointer; transition: 0.3s;
+    }
+    .btn-main:hover {transform: scale(1.05); opacity: 0.9;}
+
+    /* Plans */
+    .plans {padding: 80px 20px; text-align: center;}
+    .plans h2 {font-size: 2.2rem; margin-bottom: 40px;}
+    .plan-container {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+    }
+    .plan-card {
+      background: #1b1b1b; padding: 25px; border-radius: 12px;
+      width: 260px; box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      transition: 0.3s;
+    }
+    .plan-card:hover {transform: translateY(-5px);}
+    .plan-card h3 {margin-bottom: 10px;}
+    .plan-card p {font-size: 1.1rem; margin-bottom: 15px;}
+    .plan-card button {
+      padding: 12px 20px; border: none; border-radius: 30px;
+      background: linear-gradient(135deg,#ff4081,#ff9800);
+      color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s;
+    }
+    .plan-card button:hover {transform: scale(1.05);}
+
+    /* Footer */
+    footer {
+      padding: 20px; background: #000; text-align: center; font-size: 0.9rem; color: #777;
+    }
+  </style>
 </head>
 <body>
+
   <!-- Hero Section -->
   <section class="hero">
-    <div class="overlay">
+    <div class="hero-content">
       <h1>Welcome to Your Exclusive Club</h1>
-      <p>Unlock premium content & connect directly</p>
-      <button onclick="startPayment(199)">Join Now ₹199</button>
+      <p>Get premium access to content instantly</p>
+      <button class="btn-main" onclick="startPayment(199)">Unlock Now ₹199</button>
     </div>
   </section>
 
   <!-- Plans Section -->
   <section class="plans">
     <h2>Choose Your Plan</h2>
-    <div class="plan-card">
-      <h3>Basic Access</h3>
-      <p>₹199 / month</p>
-      <button onclick="startPayment(199)">Buy Now</button>
-    </div>
-    <div class="plan-card">
-      <h3>Premium Access</h3>
-      <p>₹499 / month</p>
-      <button onclick="startPayment(499)">Buy Now</button>
+    <div class="plan-container">
+      <div class="plan-card">
+        <h3>Basic Plan</h3>
+        <p>₹199 / month</p>
+        <button onclick="startPayment(199)">Buy Now</button>
+      </div>
+      <div class="plan-card">
+        <h3>Premium Plan</h3>
+        <p>₹499 / month</p>
+        <button onclick="startPayment(499)">Buy Now</button>
+      </div>
     </div>
   </section>
 
@@ -36,51 +95,15 @@
     <p>© 2025 YourBrand. All rights reserved.</p>
   </footer>
 
-  <!-- Payment Script -->
+  <!-- Payment + Redirect -->
   <script>
     function startPayment(amount) {
       alert("Payment started for ₹" + amount);
-      // Replace with real Cashfree / Razorpay integration
+      // TODO: Replace with real payment integration
       setTimeout(() => {
         window.location.href = "https://t.me/YOUR_CHANNEL_LINK";
       }, 2000);
     }
   </script>
-
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: Arial, sans-serif; background: #111; color: #fff;}
-    
-    .hero {
-      height: 100vh;
-      background: url('https://picsum.photos/1200/800?blur=3') no-repeat center center/cover;
-      display: flex; justify-content: center; align-items: center;
-      text-align: center; position: relative;
-    }
-    .overlay {
-      background: rgba(0,0,0,0.6); padding: 40px; border-radius: 10px;
-    }
-    .hero h1 {font-size: 3rem; margin-bottom: 15px;}
-    .hero p {margin-bottom: 20px;}
-    .hero button {
-      padding: 12px 25px; font-size: 1rem;
-      background: #e91e63; color: #fff;
-      border: none; border-radius: 5px; cursor: pointer;
-    }
-    .plans {padding: 60px 20px; text-align: center;}
-    .plans h2 {font-size: 2rem; margin-bottom: 30px;}
-    .plan-card {
-      background: #222; padding: 20px; border-radius: 10px;
-      display: inline-block; margin: 10px; width: 200px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    .plan-card h3 {margin-bottom: 10px;}
-    .plan-card button {
-      margin-top: 15px; padding: 10px 20px;
-      background: #e91e63; color: #fff;
-      border: none; border-radius: 5px; cursor: pointer;
-    }
-    footer {padding: 20px; background: #000; text-align: center;}
-  </style>
 </body>
 </html>
